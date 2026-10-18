@@ -1,0 +1,11 @@
+#!/bin/sh
+# 在板级默认网络(正确 swconfig:0-3 lan / 4 wan / cpu 6@eth0)基础上,
+# 仅叠加自定义 LAN 静态 IP;WAN 保留板级默认 DHCP。
+
+uci -q set network.lan.proto='static'
+uci -q set network.lan.ipaddr='192.168.7.1'
+uci -q set network.lan.netmask='255.255.255.0'
+
+uci -q commit network
+
+exit 0
